@@ -1,7 +1,8 @@
 package com.bridgelabz;
 /**
  * Validate Email Address with regex
- * In third let's validate the mandatory part abc
+ * Validate first mandatory part i.e; abc
+ * Ensure @ and validate the mandatory second part i.e; bridgelabz
  */
 
 import java.util.ArrayList;
@@ -17,9 +18,9 @@ public class EmailPatternValidation {
      */
     public static boolean isValidEmail(String email) {
         /**
-         * Regex to check first mandatory part i.e; abc
+         * Regex to check first mandatory part i.e; abc,@ and bridgelabz
          */
-        String emailRegex = "^[a-zA-Z]*$";
+        String emailRegex = "^[A-Za-z]*@[A-Za-z]*$";
         /**
          * Compiling the ReGex
          */
@@ -56,8 +57,10 @@ public class EmailPatternValidation {
         /**
          * 2.Adding the email addresses to list which need to be validated
          */
-        emailAddressList.add("abc");
-        emailAddressList.add("a2sd");
+        emailAddressList.add("abc@bridgelabz");
+        emailAddressList.add("abc_bridgelabz");
+        emailAddressList.add("ab33c@_bridgel4abz");
+
         /**
          * 3.Iterating and printing valid message if the email addresses entered are valid
          * else prints not valid message
