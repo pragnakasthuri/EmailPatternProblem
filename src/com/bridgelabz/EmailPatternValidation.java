@@ -3,6 +3,7 @@ package com.bridgelabz;
  * Validate Email Address with regex
  * Validate first mandatory part i.e; abc
  * Ensure @ and validate the mandatory second part i.e; bridgelabz
+ * Ensure "." after bridgelabz and validate the mandatory third part i.e; co
  */
 
 import java.util.ArrayList;
@@ -18,9 +19,9 @@ public class EmailPatternValidation {
      */
     public static boolean isValidEmail(String email) {
         /**
-         * Regex to check first mandatory part i.e; abc,@ and bridgelabz
+         * Regex to check first mandatory part i.e; abc, @, bridgelabz, ".", and co
          */
-        String emailRegex = "^[A-Za-z]*@[A-Za-z]*$";
+        String emailRegex = "^[A-Za-z]*@[A-Za-z]*\\.[A-Za-z]{2,5}$";
         /**
          * Compiling the ReGex
          */
@@ -57,9 +58,9 @@ public class EmailPatternValidation {
         /**
          * 2.Adding the email addresses to list which need to be validated
          */
-        emailAddressList.add("abc@bridgelabz");
-        emailAddressList.add("abc_bridgelabz");
-        emailAddressList.add("ab33c@_bridgel4abz");
+        emailAddressList.add("abc@bridgelabz.co");
+        emailAddressList.add("abc_bridgelabz.company56");
+        emailAddressList.add("ab33c@_bridgel4abz*gooogle");
 
         /**
          * 3.Iterating and printing valid message if the email addresses entered are valid
