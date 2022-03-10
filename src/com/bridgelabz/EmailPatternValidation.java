@@ -11,35 +11,8 @@ package com.bridgelabz;
  */
 
 import java.util.ArrayList;
-import java.util.regex.Pattern;
 
 public class EmailPatternValidation {
-    /**
-     * Creating isValidEmail method to validate the email address using regex
-     * and returns true or false
-     *
-     * @param email - Takes the given email
-     * @return true if it matches else false
-     */
-    public static boolean isValidEmail(String email) {
-        /**
-         * Regex to check first mandatory part i.e; abc, @, bridgelabz, ".", co and xyz and .in
-         */
-        String emailRegex = "^[A-Za-z]+(?:[-_+.a-zA-Z0-9]+)@([A-Za-z]+\\.)+[A-Za-z]{2,5}+(?:(\\.([A-Za-z]{2})))?$";
-        /**
-         * Compiling the ReGex
-         */
-        Pattern pattern = Pattern.compile(emailRegex);
-        /**
-         * If the email is empty return false
-         */
-        if (email == null)
-            return false;
-        /**
-         * Return if the email matched the Regex
-         */
-        return pattern.matcher(email).matches();
-    }
 
     /**
      * Main method from where the execution gets started
@@ -51,7 +24,8 @@ public class EmailPatternValidation {
          * PROCEDURE:
          * 1.Creating an Array list to store the email Addresses which need to be validated
          * 2.Adding the email addresses to list which need to be validated
-         * 3.Iterating and printing valid message if the email addresses entered are valid
+         * 3.Creating an object for EmailPattern
+         * 4.Iterating and printing valid message if the email addresses entered are valid
          * else prints not valid message
          */
 
@@ -69,19 +43,39 @@ public class EmailPatternValidation {
         emailAddressList.add("abc111@abc.com");
         emailAddressList.add("abc-100@abc.net");
         emailAddressList.add("abc.100@abc.com.au");
+        emailAddressList.add("abc@1.com");
+        emailAddressList.add("abc@gmail.com.com");
         emailAddressList.add("abc.xyz@bridgelabz.co.in");
-
+        emailAddressList.add("abc+100@gmail.com");
         emailAddressList.add("abc.xyz@bridgelabz.co");
         emailAddressList.add("abc-xyz@bridgelabz.co.in");
         emailAddressList.add("abc_bridgelabz.company56");
         emailAddressList.add("ab33c@_bridgel4abz*gooogle");
+        emailAddressList.add("abc");
+        emailAddressList.add("abc@.com.my");
+        emailAddressList.add("abc123@gmail.a");
+        emailAddressList.add("abc123@.com");
+        emailAddressList.add("abc123@.com.com");
+        emailAddressList.add(".abc@abc.com");
+        emailAddressList.add("abc()*@gmail.com");
+        emailAddressList.add("abc@%*.com");
+        emailAddressList.add("abc..2002@gmail.com");
+        emailAddressList.add("abc.@gmail.com");
+        emailAddressList.add("abc@abc@gmail..com");
+        emailAddressList.add("abc@gmail.com.1a");
+        emailAddressList.add("ab33c@_bridgel4abz*gooogle");
 
         /**
-         * 3.Iterating and printing valid message if the email addresses entered are valid
+         * 3.Creating an object for EmailPattern
+         */
+        EmailPattern emailPattern = new EmailPattern();
+
+        /**
+         * 4.Iterating and printing valid message if the email addresses entered are valid
          * else prints not valid message
          */
         for (String emailAddress : emailAddressList) {
-            if (isValidEmail(emailAddress))
+            if (emailPattern.isValidEmail(emailAddress))
                 System.out.println(emailAddress + " - Valid");
             else
                 System.out.println(emailAddress + " - Not valid");
